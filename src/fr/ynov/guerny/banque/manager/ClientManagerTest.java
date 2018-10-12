@@ -1,11 +1,15 @@
 package fr.ynov.guerny.banque.manager;
 
+
+
 import fr.ynov.guerny.banque.model.Account;
 import fr.ynov.guerny.banque.model.Client;
 import fr.ynov.guerny.banque.model.Transaction;
 
-public class ClientManagerTest {
 
+public class ClientManagerTest {
+	
+	//private Logger logger = LogerManager.getLogger();
 	public static void main(String[] args) {
 		loadByLoginPassword("monLogin", "monPassword");
 		//saveClient("prenom", "nom", "monLogin", "monPassword");
