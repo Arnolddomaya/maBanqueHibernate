@@ -28,10 +28,11 @@ public class ClientManager  {
 		Client user = em.find(Client.class, clientId);
 		return user;
 	}
-	public static Client loadClientByLoginAndPassword(String login, String password) throws NoResultException{
+	
+	public static Client loadClientByLoginAndPassword(String login, String password) throws NoResultException {
 		EntityManager em = BaseManager.getEntityManager();
 		TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c WHERE c.login='" + login +"' and c.password='" + password + "'", Client.class);
-		Client cli;
+		Client cli = null;
 		try{
 			cli = query.getSingleResult();
 			logger.info("CLient found");
