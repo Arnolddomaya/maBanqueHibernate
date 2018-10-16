@@ -4,20 +4,21 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>User Login</title>
 </head>
 <body>
 	<h1>Page de login</h1>
 	<%
-		if (request.getAttribute("errorMsg") != null){
-			out.println("Message d'erreur !!");
+		String errorMsg = (String)request.getAttribute("errorMsg");
+		if (errorMsg != null){
+			out.println("Message d'erreur :" + errorMsg);
+			request.setAttribute("errorMsg", null);
 		}
 	%>
 	<div class="wrapper fadeInDown">
 	  <div id="formContent">
 	    <!-- Tabs Titles -->
 	    <h2 class="active"> Sign In </h2>
-	    <h2 class="inactive underlineHover">Sign Up </h2>
 	
 	    <!-- Icon -->
 	    <div class="fadeIn first">

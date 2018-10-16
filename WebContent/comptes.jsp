@@ -13,6 +13,9 @@
 				out.println("Message d'erreur !!");
 			}
 		%></p>
-	<h1>Les COMPTES de <b><%=request.getAttribute("name") %></b></h1>
+	<h3>name :<strong><c:out value="${ name }"/></strong></h3>
+	<c:forEach items="${ accounts }" var="account" varStatus="status">
+    	<p>N°<c:out value="${ status.count }" /> : <c:out value="${ account.getLibelle() }" /> !</p>
+	</c:forEach>
 </body>
 </html>
