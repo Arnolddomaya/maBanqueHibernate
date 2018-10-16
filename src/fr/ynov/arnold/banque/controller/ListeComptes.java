@@ -22,12 +22,20 @@ public class ListeComptes extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//private static final Logger logger = (Logger) LogManager.getLogger(Client.class);
+	private static final Logger logger = (Logger) LogManager.getLogger(ListeComptes.class);
 	//private static final org.apache.logging.log4j.Logger logger =  LogManager.getLogger(Client.class);
 
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		Client client = (Client)request.getSession().getAttribute("client");
-		//logger.info("Client : " + client.getLogin() + " Bien récupéré");
+		if (client != null) {
+			logger.info("controller ListeComptes, Test client bien récupéré!");
+			request.setAttribute("name", client.getName());
+			request.setAttribute("accounts", client.getAccounts());
+		}
+		else { 
+			logger.info("controller ListeComptes, Client loading fails!");
+			Login.loginPath(request, response);
+		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/comptes.jsp");
 		dispatcher.forward(request, response);
 	}

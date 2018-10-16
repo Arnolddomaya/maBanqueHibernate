@@ -13,6 +13,6 @@
 				out.println("Message d'erreur !!");
 			}
 		%></p>
-	<h1>Les COMPTES de <b><%=request.getAttribute("name") %></b></h1>
+	<h3>name :<strong><%=request.getAttribute("name") %></strong></h3>
 </body>
 </html>

@@ -24,6 +24,7 @@ public class Login extends HttpServlet{
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userLogin.jsp");
 		dispatcher.forward(request, response);
+		logger.info("controller Login, method doGet!");
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
@@ -31,15 +32,20 @@ public class Login extends HttpServlet{
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		
-		logger.info("Dans doPost()");
+		logger.info("controller Login, method doPost!");
 		Client client = ClientManager.loadClientByLoginAndPassword(login, password);
 		if (client == null) {
 			request.setAttribute("errorMsg", "login inexistant ou mdp invalid !!");
+			logger.info("Client not found");
 			loginDispatcher.forward(request, response);
 		}
 		else {
+			logger.info("Client found, client found, redirection to comptes path");
 			request.getSession().setAttribute("client", client);
 			response.sendRedirect(request.getContextPath()+"/comptes");
 		}
+	}
+	public static void loginPath(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+		response.sendRedirect(request.getContextPath()+"/userLogin.jsp");
 	}
 }
