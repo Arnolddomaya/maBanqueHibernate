@@ -39,20 +39,4 @@ public class ListeComptes extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/comptes.jsp");
 		dispatcher.forward(request, response);
 	}
-	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		RequestDispatcher loginDispatcher = getServletContext().getRequestDispatcher("/userLogin.jsp");
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
-		
-		Client client = ClientManager.loadClientByLoginAndPassword(login, password);
-		if (client == null) {
-			request.setAttribute("errorMsg", "login inexistant ou mdp invalid !!");
-			loginDispatcher.forward(request, response);
-		}
-		else {
-			request.setAttribute("name", client.getName());
-			request.getSession().setAttribute("client", client);
-			response.sendRedirect(request.getContextPath()+"/comptes");
-		}
-	}
 }
