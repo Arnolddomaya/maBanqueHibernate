@@ -2,8 +2,8 @@ package fr.ynov.arnold.banque.manager;
 
 import javax.persistence.EntityManager;
 
-import fr.ynov.guerny.banque.model.Account;
-import fr.ynov.guerny.banque.model.Transaction;
+import fr.ynov.arnold.banque.model.Account;
+import fr.ynov.arnold.banque.model.Transaction;
 
 public class AccountManager {
 

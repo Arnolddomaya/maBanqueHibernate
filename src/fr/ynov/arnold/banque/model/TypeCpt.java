@@ -1,4 +1,4 @@
-package fr.ynov.guerny.banque.model;
+package fr.ynov.arnold.banque.model;
 
 public class TypeCpt {
 	private int id;

@@ -6,7 +6,8 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 
 import fr.ynov.arnold.banque.controller.ListeComptes;
-import fr.ynov.guerny.banque.model.Client;
+import fr.ynov.arnold.banque.model.Client;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 

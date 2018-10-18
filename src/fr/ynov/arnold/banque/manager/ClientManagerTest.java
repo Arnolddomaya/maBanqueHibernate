@@ -2,9 +2,9 @@ package fr.ynov.arnold.banque.manager;
 
 
 
-import fr.ynov.guerny.banque.model.Account;
-import fr.ynov.guerny.banque.model.Client;
-import fr.ynov.guerny.banque.model.Transaction;
+import fr.ynov.arnold.banque.model.Account;
+import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.model.Transaction;
 
 
 public class ClientManagerTest {

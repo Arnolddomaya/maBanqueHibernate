@@ -2,7 +2,7 @@ package fr.ynov.arnold.banque.manager;
 
 import javax.persistence.EntityManager;
 
-import fr.ynov.guerny.banque.model.Transaction;
+import fr.ynov.arnold.banque.model.Transaction;
 
 public class TransactionManager {
 	public static  Transaction loadClientById(Integer transacId) {

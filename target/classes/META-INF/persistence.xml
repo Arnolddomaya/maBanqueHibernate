@@ -6,9 +6,9 @@
 	<persistence-unit name="myBanque">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>fr.ynov.guerny.banque.model.Client</class>
-		<class>fr.ynov.guerny.banque.model.Account</class>
-		<class>fr.ynov.guerny.banque.model.Transaction</class>
+		<class>fr.ynov.arnold.banque.model.Client</class>
+		<class>fr.ynov.arnold.banque.model.Account</class>
+		<class>fr.ynov.arnold.banque.model.Transaction</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
