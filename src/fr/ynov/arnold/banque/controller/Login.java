@@ -16,7 +16,7 @@ import fr.ynov.guerny.banque.manager.ClientManager;
 import fr.ynov.guerny.banque.model.Client;
 
 
-@WebServlet("/userLogin")
+@WebServlet(urlPatterns= {"","/userLogin"})
 public class Login extends HttpServlet{
 	private static final long serialVersionUID = 2L;
 	private static final Logger logger = (Logger) LogManager.getLogger(Client.class);
