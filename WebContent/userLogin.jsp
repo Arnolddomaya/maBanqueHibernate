@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,14 @@
 <title>User Login</title>
 </head>
 <body>
-	<h1>Page de login</h1>
+	<c:out value="${ param.lang }"/>
+	<c:set var="lang" value="${ param.lang }" scope="page" />
+	
+	
+	<!-- 	setLocale avant les autres	-->	
+	<fmt:setLocale value="${lang}"/>
+	<fmt:setBundle basename="fr.ynov.arnold.banque.textes.message"/>  
+	<h1><fmt:message key="login"/></h1>
 	<%
 		String errorMsg = (String)request.getAttribute("errorMsg");
 		if (errorMsg != null){
