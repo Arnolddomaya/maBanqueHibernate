@@ -1,4 +1,4 @@
-package fr.ynov.guerny.banque.manager;
+package fr.ynov.arnold.banque.manager;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;

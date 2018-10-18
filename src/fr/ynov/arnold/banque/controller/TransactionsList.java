@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
-import fr.ynov.guerny.banque.manager.AccountManager;
+import fr.ynov.arnold.banque.manager.AccountManager;
 import fr.ynov.guerny.banque.model.Account;
 import fr.ynov.guerny.banque.model.Client;
 
