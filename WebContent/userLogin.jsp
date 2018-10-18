@@ -50,6 +50,7 @@
 
 			<form action=""<%=request.getContextPath() + "/userLogin"%>"" method="GET">
 				<select name=lang>
+					<option value="">Langue</option>
 					<option value="fr">Francais</option>
 					<option value="en">English</option>
 					<input type="submit" value="<fmt:message key="chLang" />" />
