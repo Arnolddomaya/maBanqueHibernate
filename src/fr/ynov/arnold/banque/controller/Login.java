@@ -25,6 +25,7 @@ public class Login extends HttpServlet{
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userLogin.jsp");
 		dispatcher.forward(request, response);
 		logger.info("controller Login, method doGet!");
+		
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
