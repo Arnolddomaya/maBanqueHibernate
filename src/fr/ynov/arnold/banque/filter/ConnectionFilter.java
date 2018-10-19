@@ -8,10 +8,12 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@WebFilter("/*")
 public class ConnectionFilter implements Filter {
 	
 	@Override
@@ -23,9 +25,9 @@ public class ConnectionFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        String loginURI = request.getContextPath() + "/login";
+        String loginURI = request.getContextPath() + "/userLogin";
 
-        boolean loggedIn = session != null && session.getAttribute("user") != null;
+        boolean loggedIn = session != null && session.getAttribute("client") != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
 
         if (loggedIn || loginRequest) {
