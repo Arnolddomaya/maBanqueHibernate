@@ -9,8 +9,8 @@
 <title>User Login</title>
 </head>
 <body>
-	<c:out value="${ param.lang }" />
-	<c:set var="lang" value="${ param.lang }" scope="page" />
+<%-- 	<c:set var="lang" value="${ param.lang }" scope="page" />
+ --%> 	<c:set var="lang" value="${(empty param.lang) ? 'fr' : param.lang}" scope="session" />
 
 
 	<!-- 	setLocale avant les autres	-->
@@ -48,8 +48,9 @@
 				<input type="submit" class="fadeIn fourth" value="Log In">
 			</form>
 
-			<form action=""<%=request.getContextPath() + "/userLogin"%>"" method="GET">
-				<select name=lang>
+			<form action= "${pageContext.request.requestURL}" method="GET">
+<%-- 			<form action=""<%=request.getContextPath() + "/userLogin"%>"" method="GET">
+ --%>				<select name=lang>
 					<option value="">Langue</option>
 					<option value="fr">Francais</option>
 					<option value="en">English</option>
