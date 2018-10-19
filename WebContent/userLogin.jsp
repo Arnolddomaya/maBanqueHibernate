@@ -55,7 +55,7 @@
 					<option value="en">English</option>
 					<input type="submit" value="<fmt:message key="chLang" />" />
 				</select>
-			</form>
+			</form> 
 
 			<!-- Remind Passowrd -->
 			<div id="formFooter">
