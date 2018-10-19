@@ -27,10 +27,14 @@ li a:hover:not(.active) {
     background-color: #4CAF50;
 }
 </style>
+<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgNavbar" />
 <ul>
   <li><a href="#">Home</a></li>
   <li><a href="<c:url value="/comptes"/>">comptes</a></li>
   <li><a href="#">Contact</a></li>
   <li><a href="#">About</a></li>
+  <c:if test="${ client != null }" >
+    <li style="float:right"><a href="<c:url value="/logout"/>"><fmt:message key="logout" /></a></li>
+  </c:if>
 </ul>
 

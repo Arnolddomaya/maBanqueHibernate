@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
-import fr.ynov.arnold.banque.manager.ClientManager;
 import fr.ynov.arnold.banque.model.Client;
 
 @WebServlet("/comptes")

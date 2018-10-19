@@ -19,13 +19,12 @@ import fr.ynov.arnold.banque.model.Client;
 @WebServlet(urlPatterns= {"","/userLogin"})
 public class Login extends HttpServlet{
 	private static final long serialVersionUID = 2L;
-	private static final Logger logger = (Logger) LogManager.getLogger(Client.class);
+	private static final Logger logger = (Logger) LogManager.getLogger(Login.class);
 
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userLogin.jsp");
-		dispatcher.forward(request, response);
 		logger.info("controller Login, method doGet!");
-		
+		dispatcher.forward(request, response);	
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
@@ -41,7 +40,7 @@ public class Login extends HttpServlet{
 			loginDispatcher.forward(request, response);
 		}
 		else {
-			logger.info("Client found, client found, redirection to comptes path");
+			logger.error("Client found, client found, redirection to comptes path");
 			request.getSession().setAttribute("client", client);
 			response.sendRedirect(request.getContextPath()+"/comptes");
 		}
