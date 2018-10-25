@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class Validates {
+class PassValidationsTests {
 
 	@Test
 	void goodLength()
@@ -47,12 +47,32 @@ class Validates {
 		assertEquals(PasswordValidations.accentExists("ייי"), true);
 	}
 	@Test
-	void valideByReggex() {
+	void validePasswordInput() {
 		assertEquals(PasswordValidations.valideInput("1234"), false);
 		assertEquals(PasswordValidations.valideInput("12345678"), false);
 		assertEquals(PasswordValidations.valideInput("A2345678"), false);
 		assertEquals(PasswordValidations.valideInput("A@345678"), false);
 		assertEquals(PasswordValidations.valideInput("A@י45678"), true);
+	}
+	
+	@Test
+	void validePassConfirmation() {
+		assertFalse(PasswordValidations.goodConfirmation("","123"));
+		assertFalse(PasswordValidations.goodConfirmation("123",""));
+		assertTrue(PasswordValidations.goodConfirmation("123","123"));
+		assertTrue(PasswordValidations.goodConfirmation("A@345678","A@345678"));
+	}
+	
+	@Test 
+	void finalCheck() {
+		assertTrue(PasswordValidations.check("A@345678י","A@345678י"));
+		assertTrue(PasswordValidations.check("A@345678A@345678י","A@345678A@345678י"));
+		assertFalse(PasswordValidations.check("A@345678",""));
+		assertFalse(PasswordValidations.check("","A@345678"));
+		assertFalse(PasswordValidations.check("A@3456781","A@345678"));
+		assertFalse(PasswordValidations.check("@345678","@345678"));
+		assertFalse(PasswordValidations.check("12345678","12345678"));
+		assertFalse(PasswordValidations.check("123456789","123456789"));
 	}
 
 }

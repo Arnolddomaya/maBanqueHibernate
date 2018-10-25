@@ -18,8 +18,9 @@ import org.apache.logging.log4j.core.Logger;
 import fr.ynov.arnold.banque.manager.AccountManager;
 import fr.ynov.arnold.banque.model.Account;
 import fr.ynov.arnold.banque.others.Jsp_path;
+import fr.ynov.arnold.banque.others.Url_path;
 
-@WebServlet("/transacs")
+@WebServlet(Url_path.TRANSACS)
 public class TransactionsList extends HttpServlet{
 	
 	private static final long serialVersionUID = 3L;

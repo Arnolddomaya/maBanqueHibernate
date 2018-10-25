@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../includes/jstl_includes.jsp" %>
+<%@ page import="fr.ynov.arnold.banque.others.Url_path"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -40,7 +42,7 @@
 			</div>
 
 			<!-- Login Form -->
-			<form action="<%=request.getContextPath() + "/userLogin"%>"
+			<form action="<%=request.getContextPath() + Url_path.LOGIN %>"
 				method="POST">
 				<input type="text" id="login" class="fadeIn second" name="login"
 					placeholder="login"> <input type="text" id="password"
@@ -49,8 +51,7 @@
 			</form>
 
 			<form action= "${pageContext.request.requestURL}" method="GET">
-<%-- 			<form action=""<%=request.getContextPath() + "/userLogin"%>"" method="GET">
- --%>				<select name=lang>
+ 					<select name=lang>
 					<option value="">Langue</option>
 					<option value="fr">Francais</option>
 					<option value="en">English</option>

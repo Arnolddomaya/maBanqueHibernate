@@ -14,8 +14,9 @@ import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.model.Client;
 import fr.ynov.arnold.banque.others.Jsp_path;
+import fr.ynov.arnold.banque.others.Url_path;
 
-@WebServlet("/comptes")
+@WebServlet(Url_path.ACCOUNT)
 public class ListeComptes extends HttpServlet {
 	
 	/**

@@ -15,6 +15,7 @@ import org.apache.logging.log4j.core.Logger;
 import fr.ynov.arnold.banque.manager.ClientManager;
 import fr.ynov.arnold.banque.model.Client;
 import fr.ynov.arnold.banque.others.Jsp_path;
+import fr.ynov.arnold.banque.others.Url_path;
 
 
 @WebServlet(urlPatterns= {"","/userLogin"})
@@ -45,10 +46,10 @@ public class Login extends HttpServlet{
 			request.getSession().setAttribute("client", client);
 			//Attribuer une durée de la connexion ici fixé à 2 min
 			request.getSession().setMaxInactiveInterval(2*60);
-			response.sendRedirect(request.getContextPath()+"/comptes");
+			response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 		}
 	}
 	public static void loginPath(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath()+"/comptes");
+		response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 	}
 }
