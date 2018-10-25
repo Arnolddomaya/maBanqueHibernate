@@ -33,13 +33,23 @@ public class ConnectionFilter implements Filter {
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/userLogin";
 
-        Client cli = (Client)session.getAttribute("client");
-        if (cli != null)
-        	logger.info("Filter ConnectionFilert, CLient exists");
-        else 
-        	logger.error("Filter ConnectionFilert, CLient exists");
-        
-        boolean loggedIn = session != null && session.getAttribute("client") != null;
+        Client cli;
+        try {
+        	cli = (Client)session.getAttribute("client");
+        	if (cli != null)
+        		logger.info("Filter ConnectionFilert, CLient exists__try_Catch");
+        	else 
+        		logger.info("Filter ConnectionFilert, CLient not exists__try_Catch");
+        }
+        catch(java.lang.NullPointerException e ) {
+        	cli = null;
+        	logger.error("Filter ConnectionFilert, CLient not exists");
+        }
+//        if (cli != null)
+//        	logger.info("Filter ConnectionFilert, CLient exists___ testIf");
+//        else 
+//        	logger.error("Filter ConnectionFilert, CLient not exists");
+        boolean loggedIn = session != null && cli != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
         if (loggedIn || loginRequest) {
             chain.doFilter(request, response);

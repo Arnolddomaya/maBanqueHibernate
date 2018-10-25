@@ -36,12 +36,14 @@ public class Login extends HttpServlet{
 		Client client = ClientManager.loadClientByLoginAndPassword(login, password);
 		if (client == null) {
 			request.setAttribute("errorMsg", "login inexistant ou mdp invalid !!");
-			logger.info("Client not found");
+			logger.info("controller Login, method doPost   Client not found");
 			loginDispatcher.forward(request, response);
 		}
 		else {
 			logger.error("Client found, client found, redirection to comptes path");
 			request.getSession().setAttribute("client", client);
+			//Attribuer une durée de la connexion ici fixé à 2 min
+			request.getSession().setMaxInactiveInterval(2*60);
 			response.sendRedirect(request.getContextPath()+"/comptes");
 		}
 	}
