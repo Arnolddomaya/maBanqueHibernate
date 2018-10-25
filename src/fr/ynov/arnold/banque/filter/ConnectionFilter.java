@@ -33,7 +33,7 @@ public class ConnectionFilter implements Filter {
         HttpSession session = request.getSession(false);
         String loginURI = request.getContextPath() + "/userLogin";
 
-        Client cli;
+        Client cli ;
         try {
         	cli = (Client)session.getAttribute("client");
         	if (cli != null)

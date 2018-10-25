@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ include file="includes/jstl_includes.jsp" %>
+<%@ include file="../includes/jstl_includes.jsp" %>
 
 
 
@@ -11,7 +11,7 @@
 <title>Mes Comptes</title>
 </head>
 <body>
-	<%@ include file="includes/navbar.jsp" %>
+	<%@ include file="../includes/navbar.jsp" %>
 	<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgAccounts" />
 	<p><%
 			if (request.getAttribute("errorMsg") != null){

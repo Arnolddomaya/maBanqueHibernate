@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.others.Jsp_path;
 
 @WebServlet("/comptes")
 public class ListeComptes extends HttpServlet {
@@ -35,7 +36,7 @@ public class ListeComptes extends HttpServlet {
 			logger.info("controller ListeComptes, Client loading fails!");
 			Login.loginPath(request, response);
 		}
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/comptes.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Jsp_path.COMPTES);
 		dispatcher.forward(request, response);
 	}
 }

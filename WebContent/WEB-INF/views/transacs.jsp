@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ include file="includes/jstl_includes.jsp" %>
+<%@ include file="../includes/jstl_includes.jsp" %>
  
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,7 @@
 <title>Transactions page</title>
 </head>
 <body>
-	<%@ include file="includes/navbar.jsp" %>
+	<%@ include file="../includes/navbar.jsp" %>
 	<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgTransacs" />
 	<h3>libelle :<strong><c:out value="${ libel }"/></strong></h3>
 	<c:forEach items="${ transacs }" var="transac" varStatus="status">

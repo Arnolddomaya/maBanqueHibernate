@@ -14,6 +14,7 @@ import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.manager.ClientManager;
 import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.others.Jsp_path;
 
 
 @WebServlet(urlPatterns= {"","/userLogin"})
@@ -22,13 +23,13 @@ public class Login extends HttpServlet{
 	private static final Logger logger = (Logger) LogManager.getLogger(Login.class);
 
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userLogin.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Jsp_path.LOGIN);
 		logger.info("controller Login, method doGet!");
 		dispatcher.forward(request, response);	
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		RequestDispatcher loginDispatcher = getServletContext().getRequestDispatcher("/userLogin.jsp");
+		RequestDispatcher loginDispatcher = getServletContext().getRequestDispatcher(Jsp_path.LOGIN);
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		
@@ -48,6 +49,6 @@ public class Login extends HttpServlet{
 		}
 	}
 	public static void loginPath(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		response.sendRedirect(request.getContextPath()+"/userLogin.jsp");
+		response.sendRedirect(request.getContextPath()+"/comptes");
 	}
 }
