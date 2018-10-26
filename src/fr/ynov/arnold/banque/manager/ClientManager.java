@@ -57,6 +57,7 @@ public class ClientManager  {
 		cli.setPassword(pass);
 		cli = em.merge(cli);
 		em.getTransaction().commit();
+		
 		return cli;
 	}
 	
