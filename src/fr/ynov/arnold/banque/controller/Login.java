@@ -31,6 +31,8 @@ public class Login extends HttpServlet{
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		
+		
 		//Envoie directement sur les pages jsp, ne passe pas par les servlets.
 		//RequestDispatcher loginDispatcher = getServletContext().getRequestDispatcher(request.getContextPath()+Jsp_path.LOGIN);
 		String login = request.getParameter("login");

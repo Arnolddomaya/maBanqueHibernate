@@ -35,7 +35,8 @@ public class ListeComptes extends HttpServlet {
 		}
 		else { 
 			logger.info("controller ListeComptes, Client loading fails!");
-			Login.loginPath(request, response);
+			response.sendRedirect(request.getContextPath()+Url_path.LOGIN);
+			return;
 		}
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Jsp_path.COMPTES);
 		dispatcher.forward(request, response);

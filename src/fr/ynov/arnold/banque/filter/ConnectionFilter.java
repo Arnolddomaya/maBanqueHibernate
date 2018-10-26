@@ -19,7 +19,7 @@ import org.apache.logging.log4j.core.Logger;
 import fr.ynov.arnold.banque.model.Client;
 import fr.ynov.arnold.banque.others.Url_path;
 
-@WebFilter("/secu-*")
+@WebFilter("/secu/*")
 public class ConnectionFilter implements Filter {
 	
 	private static final Logger logger = (Logger) LogManager.getLogger(ConnectionFilter.class);

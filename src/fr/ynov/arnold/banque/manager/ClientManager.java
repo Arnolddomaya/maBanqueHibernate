@@ -47,6 +47,19 @@ public class ClientManager  {
 	public static void deleteClient(Client cli) {
 		
 	}
+	
+	
+	
+	public static Client changePassword(Client cli,  String pass) {
+		
+		EntityManager em = BaseManager.getEntityManager();
+		em.getTransaction().begin();
+		cli.setPassword(pass);
+		cli = em.merge(cli);
+		em.getTransaction().commit();
+		return cli;
+	}
+	
 	//suprime toutes les entrées des table, en sens inverse de la cascade
 	public static void purgeTable() {
 		EntityManager em = BaseManager.getEntityManager();
