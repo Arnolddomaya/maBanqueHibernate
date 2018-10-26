@@ -50,9 +50,9 @@
 				<input type="submit" class="fadeIn fourth" value="Log In">
 			</form>
 
-			<form action= "${pageContext.request.requestURL}" method="GET">
+			<form action= "<%=request.getContextPath() + Url_path.LOGIN %>" method="GET">
  					<select name=lang>
-					<option value="">Langue</option>
+					<option >Langue</option>
 					<option value="fr">Francais</option>
 					<option value="en">English</option>
 					<input type="submit" value="<fmt:message key="chLang" />" />

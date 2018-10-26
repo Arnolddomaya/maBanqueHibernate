@@ -18,7 +18,7 @@ import fr.ynov.arnold.banque.others.Jsp_path;
 import fr.ynov.arnold.banque.others.Url_path;
 
 
-@WebServlet(urlPatterns= {"","/userLogin"})
+@WebServlet(urlPatterns= {"",Url_path.LOGIN})
 public class Login extends HttpServlet{
 	private static final long serialVersionUID = 2L;
 	private static final Logger logger = (Logger) LogManager.getLogger(Login.class);
@@ -30,7 +30,7 @@ public class Login extends HttpServlet{
 	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-		RequestDispatcher loginDispatcher = getServletContext().getRequestDispatcher(Jsp_path.LOGIN);
+		RequestDispatcher loginDispatcher = getServletContext().getRequestDispatcher(request.getContextPath()+Jsp_path.LOGIN);
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		
@@ -39,7 +39,7 @@ public class Login extends HttpServlet{
 		if (client == null) {
 			request.setAttribute("errorMsg", "login inexistant ou mdp invalid !!");
 			logger.info("controller Login, method doPost   Client not found");
-			loginDispatcher.forward(request, response);
+			response.sendRedirect(request.getContextPath()+Url_path.LOGIN);
 		}
 		else {
 			logger.error("Client found, client found, redirection to comptes path");

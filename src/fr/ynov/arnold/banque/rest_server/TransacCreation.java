@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/createTransac")
+import fr.ynov.arnold.banque.others.Url_path;
+
+@WebServlet(Url_path.CREATE_TRANSACS)
 public class TransacCreation extends HttpServlet{
 
 	/**

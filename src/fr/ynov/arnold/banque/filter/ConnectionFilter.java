@@ -17,8 +17,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.others.Url_path;
 
-@WebFilter("/*")
+@WebFilter("/secu-*")
 public class ConnectionFilter implements Filter {
 	
 	private static final Logger logger = (Logger) LogManager.getLogger(ConnectionFilter.class);
@@ -31,8 +32,9 @@ public class ConnectionFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
         HttpSession session = request.getSession(false);
-        String loginURI = request.getContextPath() + "/userLogin";
-
+        String loginURI = request.getContextPath() + Url_path.LOGIN;
+        
+        logger.info("filter ConnectionFilter, startings OK!");
         Client cli ;
         try {
         	cli = (Client)session.getAttribute("client");

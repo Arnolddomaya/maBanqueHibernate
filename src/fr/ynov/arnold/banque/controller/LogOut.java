@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
-@WebServlet("/logout")
+import fr.ynov.arnold.banque.others.Url_path;
+
+@WebServlet(Url_path.LOG_OUT)
 public class LogOut extends HttpServlet {
 
 	/**
@@ -29,7 +31,7 @@ public class LogOut extends HttpServlet {
 		    //ecrase carrement le client
 			//session.invalidate();
 			session.setAttribute("client", null);
-		Login.loginPath(request, response);
+		response.sendRedirect(request.getContextPath()+Url_path.LOGIN);
 	}
 
 }

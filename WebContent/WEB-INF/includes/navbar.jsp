@@ -1,3 +1,6 @@
+
+<%@ include file="jstl_includes.jsp" %>
+<%@ page import="fr.ynov.arnold.banque.others.Url_path"%>
 <style>
 ul {
     list-style-type: none;
@@ -30,11 +33,11 @@ li a:hover:not(.active) {
 <fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgNavbar" />
 <ul>
   <li><a href="#">Home</a></li>
-  <li><a href="<c:url value="/comptes"/>">comptes</a></li>
+  <li><a href="<c:url value="${ Url_path.ACCOUNT }"/>">comptes</a></li>
   <li><a href="#">Contact</a></li>
   <li><a href="#">About</a></li>
   <c:if test="${ client != null }" >
-    <li style="float:right"><a href="<c:url value="/logout"/>"><fmt:message key="logout" /></a></li>
+    <li style="float:right"><a href="<c:url value="${ Url_path.LOG_OUT }"/>"><fmt:message key="logout" /></a></li>
   </c:if>
 </ul>
 
