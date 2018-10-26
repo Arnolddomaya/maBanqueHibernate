@@ -20,6 +20,7 @@ import fr.ynov.arnold.banque.others.Url_path;
 
 @WebServlet(urlPatterns= {"",Url_path.LOGIN})
 public class Login extends HttpServlet{
+	
 	private static final long serialVersionUID = 2L;
 	private static final Logger logger = (Logger) LogManager.getLogger(Login.class);
 

@@ -38,6 +38,7 @@ li a:hover:not(.active) {
   <li><a href="#">About</a></li>
   <c:if test="${ client != null }" >
     <li style="float:right"><a href="<c:url value="${ Url_path.LOG_OUT }"/>"><fmt:message key="logout" /></a></li>
+    <li style="float:right"><a href="<c:url value="${ Url_path.CHANGE_PASS }"/>"><fmt:message key="profile" /></a></li>
   </c:if>
 </ul>
 

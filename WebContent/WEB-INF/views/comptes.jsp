@@ -20,7 +20,7 @@
 		%></p>
 	<h3><fmt:message key="msgTitle"/><c:out value="${ name }"/></h3>
 	<c:forEach items="${ accounts }" var="account" varStatus="status">
-    	<p>N°<c:out value="${ status.count }" /> : <a href="<c:url value="${Url_path.TRANSACS}?comptId=${ account.getId() }"/>"><c:out value="${ account.getLibelle()}" /></a></p>
+    	<h3>N°<c:out value="${ status.count }" /> : <a href="<c:url value="${Url_path.TRANSACS}?comptId=${ account.getId() }"/>"><c:out value="${ account.getLibelle()}" />   <c:out value="${ account.getBalance()}" /></a></h3>
 	</c:forEach>
 </body>
 </html>

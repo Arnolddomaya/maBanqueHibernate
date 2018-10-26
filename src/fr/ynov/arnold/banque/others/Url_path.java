@@ -8,4 +8,5 @@ public class Url_path {
 	public static final String  CREATE_TRANSACS = "/createTransac";
 	public static final String  LOG_OUT = "/secu-logout";
 	public static final String  SOLDE_AMOUNT = "/soldeAmount";
+	public static final String  CHANGE_PASS = "/change_password";
 }
