@@ -40,8 +40,9 @@ public class ChangePassword extends HttpServlet{
 		String pass =request.getParameter("pass"), confirm = request.getParameter("confirm"), oldPass = request.getParameter("oldPass");
 		if (cli.getPassword().equals(oldPass) && PasswordValidations.check(pass, confirm)) {
 			logger.info("Changement de mot de passe en cours!");
-			cli = ClientManager.changePassword(cli, pass);
-			request.getSession().setAttribute("client", cli);
+			//A tester
+//			cli = ClientManager.changePassword(cli, pass);
+//			request.getSession().setAttribute("client", cli);
 			logger.info("Changement de mot de pass reussis!");
 		}
 		else {

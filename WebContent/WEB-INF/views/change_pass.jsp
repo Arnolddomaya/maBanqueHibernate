@@ -25,7 +25,7 @@
 			<input type="password" id="confirmation" name="confirm" value="" size="20" maxlength="20" /> 
 			<br /> 
 			
-			<input type="submit" value="Inscription" class="sansLabel" />
+			<input type="submit" value="Changer" class="sansLabel" />
             <br />
 		</fieldset>
 	</form>
