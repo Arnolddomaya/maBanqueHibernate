@@ -37,12 +37,19 @@ public class ChangePassword extends HttpServlet{
 		
 		logger.info("Controller ChangePassword, method doPost!");
 		Client cli = (Client) request.getSession().getAttribute("client");
-		String pass =request.getParameter("pass"), confirm = request.getParameter("confirm"), oldPass = request.getParameter("oldPass");
-		if (cli.getPassword().equals(oldPass) && PasswordValidations.check(pass, confirm)) {
+		String pass = request.getParameter("pass"), confirm = request.getParameter("confirm"), oldPass = request.getParameter("oldPass");
+		
+		logger.info("oldPass: "+ oldPass + ", pass: "+ pass + ", confirm :"+confirm);
+		if (!cli.getPassword().equals(oldPass)) {
+			logger.info("Ancien mot de pass incorrect !!!");
+			return;
+		}
+		logger.info("Ancien mot de pass correct");	
+		if	(PasswordValidations.check(pass, confirm)) {
 			logger.info("Changement de mot de passe en cours!");
 			//A tester
-//			cli = ClientManager.changePassword(cli, pass);
-//			request.getSession().setAttribute("client", cli);
+			cli = ClientManager.changePassword(cli, pass);
+			request.getSession().setAttribute("client", cli);
 			logger.info("Changement de mot de pass reussis!");
 		}
 		else {

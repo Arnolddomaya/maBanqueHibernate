@@ -16,7 +16,7 @@
 			<legend>Changement de mot de passe</legend>
 			<p>Vous pouvez changer votre mot de passe via ce formulaire.</p>
 			<label for="ancien">Ancien mdp <span class="requis">*</span>
-			</label> <input type="password" id="motdepasse" name="pass" value="" size="20" maxlength="20" /> 
+			</label> <input type="password" id="motdepasse" name="oldPass" value="" size="20" maxlength="20" /> 
 			<br />
 			<label for="motdepasse">Mot de passe <span class="requis">*</span>
 			</label> <input type="password" id="motdepasse" name="pass" value="" size="20" maxlength="20" /> 
