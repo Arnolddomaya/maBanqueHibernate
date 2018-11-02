@@ -29,11 +29,13 @@ public class Transaction {
 	
 	public Transaction(double pamount) {
 		amount = pamount;
+		this.date = new Date();
 	}
 	
 	public Transaction(double pamount, String label) {
 		this.amount = pamount;
 		this.label = label;
+		this.date = new Date();
 	}
 	
 	//Getters and Setters
