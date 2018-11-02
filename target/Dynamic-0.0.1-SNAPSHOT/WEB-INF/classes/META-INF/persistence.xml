@@ -6,20 +6,18 @@
 	<persistence-unit name="myBanque">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		
-		<class>fr.ynov.guerny.banque.model.Client</class>
-		<class>fr.ynov.guerny.banque.model.Account</class>
-		<class>fr.ynov.guerny.banque.model.Transaction</class>
+		<class>fr.ynov.arnold.banque.model.Client</class>
+		<class>fr.ynov.arnold.banque.model.Account</class>
+		<class>fr.ynov.arnold.banque.model.Transaction</class>
 		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		
 		<properties>
-			<property name="javax.persistence.jdbc.driver"
-				value="com.mysql.cj.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3308/bddhybernate?useSSL=false&amp;serverTimezone=UTC" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3308/bddhybernate?useSSL=false&amp;serverTimezone=UTC" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
-
+			
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
