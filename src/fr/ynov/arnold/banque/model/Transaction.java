@@ -1,6 +1,7 @@
 package fr.ynov.arnold.banque.model;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +24,16 @@ public class Transaction {
 	
 	//constructors
 	public Transaction() {
+		this.date = new Date();
 	}
 	
 	public Transaction(double pamount) {
 		amount = pamount;
+	}
+	
+	public Transaction(double pamount, String label) {
+		this.amount = pamount;
+		this.label = label;
 	}
 	
 	//Getters and Setters

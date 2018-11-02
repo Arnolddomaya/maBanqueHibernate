@@ -16,7 +16,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.manager.AccountManager;
+import fr.ynov.arnold.banque.manager.ClientManager;
 import fr.ynov.arnold.banque.model.Account;
+import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.model.Transaction;
 import fr.ynov.arnold.banque.others.Jsp_path;
 import fr.ynov.arnold.banque.others.Url_path;
 
@@ -32,8 +35,7 @@ public class TransactionsList extends HttpServlet{
 		int comptId = Integer.parseInt(request.getParameter("comptId"));
 		Account ac = AccountManager.loadAccountById(comptId);
 		if (ac != null) {
-			request.setAttribute("libel", ac.getLibelle());
-			request.setAttribute("transacs", ac.getTransactions());
+			request.setAttribute("ac", ac);
 			dispatcher.forward(request, response);
 		}
 		else {
@@ -43,11 +45,31 @@ public class TransactionsList extends HttpServlet{
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		
-		int comptId = Integer.parseInt(request.getParameter("comptId"));
+		logger.info("controller Transaction List method doPost : beginning!");
+		int comptId = Integer.parseInt(request.getParameter("comptId")); 
+		int	receiverId = Integer.parseInt(request.getParameter("receiverId"));
 		double amount = Double.parseDouble(request.getParameter("amount"));
 		String label = request.getParameter("label");
 		
-		Account ac = AccountManager.loadAccountById(comptId);
+		Account receiver = AccountManager.loadAccountById(receiverId);
+		if ( receiver == null || comptId == receiverId) {
+			logger.error("Receiver account id not valid !");
+			response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
+			return;
+		}
+		Account sender = AccountManager.loadAccountById(comptId);
 		
+		sender.addToTransactions(new Transaction(-amount, label));
+		receiver.addToTransactions(new Transaction(amount, label));
+		
+		AccountManager.updateAccount(sender);
+		AccountManager.updateAccount(receiver);
+		
+		Client cli = ClientManager.loadClientById(sender.getAccountClient().getId());
+		request.getSession().setAttribute("client", cli);
+		
+		logger.info("Transaction creation : Success !");
+		
+		response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 	}
 }

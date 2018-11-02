@@ -20,7 +20,7 @@
 		%></p>
 	<h3><fmt:message key="msgTitle"/><c:out value="${ name }"/></h3>
 		<c:forEach items="${ accounts }" var="account" varStatus="status">
-	    	<h3>N°<c:out value="${ status.count }" /> : <c:out value="${ account.getLibelle()}" />   <c:out value="${ account.getBalance()}" /></h3>
+	    	<h3>N°<c:out value="${ status.count }" /> : <c:out value="${ account.getLibelle()}" /> , SOLDE : <c:out value="${ account.getBalance()}" /></h3>
 	    	
 	    	<form method="get" action="<c:url value="${Url_path.TRANSACS}"/>">
 	    		<button type= "submit">details</button>

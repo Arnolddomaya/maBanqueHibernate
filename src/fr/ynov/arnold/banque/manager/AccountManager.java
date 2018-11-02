@@ -12,4 +12,14 @@ public class AccountManager {
 		Account cmpt = em.find(Account.class, comptId);
 		return cmpt;
 	}	
+	
+	public static Account updateAccount(Account acc) {
+		
+		EntityManager em = BaseManager.getEntityManager();
+		em.getTransaction().begin();
+		acc = em.merge(acc);
+		em.getTransaction().commit();
+		
+		return acc;
+	}
 }

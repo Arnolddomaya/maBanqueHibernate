@@ -12,24 +12,24 @@
 <body>
 	<%@ include file="../includes/navbar.jsp" %>
 	<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgTransacs" />
-	<h3>libelle :<strong><c:out value="${ libel }"/></strong></h3>
-	<c:forEach items="${ transacs }" var="transac" varStatus="status">
+	<h2> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h2>
+	<c:forEach items="${ ac.getTransactions() }" var="transac" varStatus="status">
     	<p>transac n° <c:out value="${ status.count }" /> , Amount : <c:out value="${ transac.getAmount() }" /></p>
 	</c:forEach>
 	<h2> Nouvelle Transaction </h2>
 		
 		<form action="<c:url value="${ Url_path.TRANSACS }"/>" method="post">
 		  Account id:<br>
-		  <input type="number"  name="receiverId" step="1"><br>
+		  <input type="number"  name="receiverId" step="1" required><br>
 		  amount:<br>
-		  <input type="number" name="amount" step="0.01"><br>
+		  <input type="number" name="amount" step="0.01" required><br>
 		  label:<br>
 		  <input type="text" name="label" ><br><br>
 		  
 		  <c:set var = "now" value = "<%= new java.util.Date()%>" />
 		  <input type="hidden" name="date" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />">
           
-          <input type="hidden" name="comptId" value="${comptId} }" />
+          <input type="hidden" name="comptId" value="${ac.getId() }" />
           
 		  <input type="submit" value="Submit">
 		</form>
