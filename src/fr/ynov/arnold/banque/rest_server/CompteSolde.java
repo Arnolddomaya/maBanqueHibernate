@@ -15,6 +15,7 @@ import fr.ynov.arnold.banque.manager.AccountManager;
 import fr.ynov.arnold.banque.model.Account;
 import fr.ynov.arnold.banque.others.Url_path;
 
+//servlet REST
 @WebServlet(Url_path.SOLDE_AMOUNT)
 public class CompteSolde extends HttpServlet{
 

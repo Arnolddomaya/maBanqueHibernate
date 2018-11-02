@@ -47,7 +47,7 @@ public class ChangePassword extends HttpServlet{
 		logger.info("Ancien mot de pass correct");	
 		if	(PasswordValidations.check(pass, confirm)) {
 			logger.info("Changement de mot de passe en cours!");
-			//A tester
+		
 			cli = ClientManager.changePassword(cli, pass);
 			request.getSession().setAttribute("client", cli);
 			logger.info("Changement de mot de pass reussis!");

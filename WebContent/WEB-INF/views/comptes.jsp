@@ -19,8 +19,14 @@
 			}
 		%></p>
 	<h3><fmt:message key="msgTitle"/><c:out value="${ name }"/></h3>
-	<c:forEach items="${ accounts }" var="account" varStatus="status">
-    	<h3>N°<c:out value="${ status.count }" /> : <a href="<c:url value="${Url_path.TRANSACS}?comptId=${ account.getId() }"/>"><c:out value="${ account.getLibelle()}" />   <c:out value="${ account.getBalance()}" /></a></h3>
-	</c:forEach>
+		<c:forEach items="${ accounts }" var="account" varStatus="status">
+	    	<h3>N°<c:out value="${ status.count }" /> : <c:out value="${ account.getLibelle()}" />   <c:out value="${ account.getBalance()}" /></h3>
+	    	
+	    	<form method="get" action="<c:url value="${Url_path.TRANSACS}"/>">
+	    		<button type= "submit">details</button>
+				<input type="hidden" name="comptId" value="${ account.getId() }" />
+			</form>
+		</c:forEach>
+		
 </body>
 </html>

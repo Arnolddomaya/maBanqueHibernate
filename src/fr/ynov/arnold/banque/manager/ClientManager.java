@@ -48,8 +48,6 @@ public class ClientManager  {
 		
 	}
 	
-	
-	
 	public static Client changePassword(Client cli,  String pass) {
 		
 		EntityManager em = BaseManager.getEntityManager();

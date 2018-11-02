@@ -41,4 +41,13 @@ public class TransactionsList extends HttpServlet{
 			Login.loginPath(request, response);
 		}		
 	}
+	public void doPost(HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		
+		int comptId = Integer.parseInt(request.getParameter("comptId"));
+		double amount = Double.parseDouble(request.getParameter("amount"));
+		String label = request.getParameter("label");
+		
+		Account ac = AccountManager.loadAccountById(comptId);
+		
+	}
 }
