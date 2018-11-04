@@ -15,7 +15,7 @@
 		<%@ include file="../includes/navbar.jsp" %>
 		<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgAccounts" />
 		<br/>
-		<h3><fmt:message key="msgTitle"/><c:out value="${ name }"/></h3>
+		<h3><fmt:message key="msgTitle"/> <c:out value="${ name }"/></h3>
 		<br/>
 		<div >
 		<table class="table table-sm w-75 p-3 center-block">

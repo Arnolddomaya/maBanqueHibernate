@@ -14,11 +14,11 @@
 	<body>
 		<%@ include file="../includes/navbar.jsp" %>
 		<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgTransacs" />
-		<br\>
-		<h2> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h2>
-		<br\>
+		<br/>
+		<h3> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h3>
+		<br/>
 		
-		<table class="table table-sm w-75 p-3 center-block">
+		<table class="table table w-75 p-3 center-block" style="margin:auto;">
 			<thead class="thead-light">
 			   <tr>
 			     <th scope="col">#</th>
