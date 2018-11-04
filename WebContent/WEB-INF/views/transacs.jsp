@@ -5,19 +5,41 @@
  
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Transactions page</title>
-</head>
-<body>
-	<%@ include file="../includes/navbar.jsp" %>
-	<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgTransacs" />
-	<h2> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h2>
-	<c:forEach items="${ ac.getTransactions() }" var="transac" varStatus="status">
-    	<p>transac n° <c:out value="${ status.count }" /> , Amount : <c:out value="${ transac.getAmount() }" /></p>
-	</c:forEach>
-	<h2> Nouvelle Transaction </h2>
+	<head>
+		<meta charset="ISO-8859-1">
+		<%@ include file="../includes/bootstrap_cdn.jsp" %>
+		<title>Liste des transactions</title>
 		
+	</head>
+	<body>
+		<%@ include file="../includes/navbar.jsp" %>
+		<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgTransacs" />
+		<br\>
+		<h2> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h2>
+		<br\>
+		
+		<table class="table table-sm w-75 p-3 center-block">
+			<thead class="thead-light">
+			   <tr>
+			     <th scope="col">#</th>
+			     <th scope="col">Montant</th>
+			     <th scope="col">Date</th>
+			   </tr>
+			 </thead>
+			 <tbody>
+				<c:forEach items="${ ac.getTransactions() }" var="transac" varStatus="status">
+				    <tr>
+				      <th scope="row"><c:out value="${ status.count }" /></th>
+				      <td><c:out value="${ transac.getAmount() }" /></td>
+				      <td><c:out value="${ transac.getDate() }" /></td>				  	
+				    </tr>				
+				</c:forEach> 
+			 </tbody>
+    	</table>
+		
+		<!-- Formulaire de création de transaction -->
+		<h2> Nouvelle Transaction </h2>
+			
 		<form action="<c:url value="${ Url_path.TRANSACS }"/>" method="post">
 		  Account id:<br>
 		  <input type="number"  name="receiverId" step="1" required><br>
@@ -33,5 +55,7 @@
           
 		  <input type="submit" value="Submit">
 		</form>
-</body>
+		
+		<%@ include file="../includes/bootstrap_script.jsp" %>
+	</body>
 </html>

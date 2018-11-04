@@ -28,7 +28,6 @@
 	<form method="post" action="<%=request.getContextPath() + Url_path.LOGIN %>">
 		<fieldset>
 			<legend><fmt:message key="login" /></legend>
-			<p>Vous pouvez changer votre mot de passe via ce formulaire.</p>
 			<label for="email">Adresse email <span class="requis">*</span></label>
             <input type="text" id="email" name="login" value="" size="20" maxlength="60" />
             <br />

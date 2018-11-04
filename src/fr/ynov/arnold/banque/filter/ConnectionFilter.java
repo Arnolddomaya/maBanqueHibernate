@@ -47,10 +47,7 @@ public class ConnectionFilter implements Filter {
         	cli = null;
         	logger.error("Filter ConnectionFilert, CLient not exists");
         }
-//        if (cli != null)
-//        	logger.info("Filter ConnectionFilert, CLient exists___ testIf");
-//        else 
-//        	logger.error("Filter ConnectionFilert, CLient not exists");
+
         boolean loggedIn = session != null && cli != null;
         boolean loginRequest = request.getRequestURI().equals(loginURI);
         if (loggedIn || loginRequest) {

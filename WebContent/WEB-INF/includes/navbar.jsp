@@ -32,7 +32,6 @@ li a:hover:not(.active) {
 </style>
 <fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgNavbar" />
 <ul>
-  <li><a href="#">Home</a></li>
   <li><a href="<c:url value="${ Url_path.ACCOUNT }"/>">Comptes</a></li>
   <c:if test="${ client != null }" >
     <li style="float:right"><a href="<c:url value="${ Url_path.LOG_OUT }"/>"><fmt:message key="logout" /></a></li>

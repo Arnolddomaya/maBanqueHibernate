@@ -6,27 +6,48 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Mes Comptes</title>
-</head>
-<body>
-	<%@ include file="../includes/navbar.jsp" %>
-	<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgAccounts" />
-	<p><%
-			if (request.getAttribute("errorMsg") != null){
-				out.println("Message d'erreur !!");
-			}
-		%></p>
-	<h3><fmt:message key="msgTitle"/><c:out value="${ name }"/></h3>
-		<c:forEach items="${ accounts }" var="account" varStatus="status">
-	    	<h3>N°<c:out value="${ status.count }" /> : <c:out value="${ account.getLibelle()}" /> , SOLDE : <c:out value="${ account.getBalance()}" /></h3>
-	    	
-	    	<form method="get" action="<c:url value="${Url_path.TRANSACS}"/>">
-	    		<button type= "submit">details</button>
-				<input type="hidden" name="comptId" value="${ account.getId() }" />
-			</form>
-		</c:forEach>
+	<head>
+		<meta charset="ISO-8859-1">
+		<%@ include file="../includes/bootstrap_cdn.jsp" %>
+		<title>Listes des comptes</title>
+	</head>
+	<body >
+		<%@ include file="../includes/navbar.jsp" %>
+		<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgAccounts" />
+		<br/>
+		<h3><fmt:message key="msgTitle"/><c:out value="${ name }"/></h3>
+		<br/>
+		<div >
+		<table class="table table-sm w-75 p-3 center-block">
+		  <thead class="thead-light">
+		    <tr>
+		      <th scope="col">#</th>
+		      <th scope="col">Libelle</th>
+		      <th scope="col">Balance</th>
+		      <th scope="col"></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <c:forEach items="${ accounts }" var="account" varStatus="status">
+			    <tr>
+			      <th scope="row"><c:out value="${ status.count }" /></th>
+			      <td><c:out value="${ account.getLibelle()}" /></td>
+			      <td><c:out value="${ account.getBalance()}" /></td>
+			      <td>
+			      
+			      	<form method="get" action="<c:url value="${Url_path.TRANSACS}"/>">
+			    	  <button type= "submit" class="btn btn-outline-secondary btn-block">details</button>
+					  <input type="hidden" name="comptId" value="${ account.getId() }" />
+					</form>
+					
+			      </td>
+			    </tr>
+		    </c:forEach>
+		  </tbody>
+		</table>
+		</div>
 		
-</body>
+		
+		<%@ include file="../includes/bootstrap_script.jsp" %>	
+	</body>
 </html>
