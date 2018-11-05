@@ -18,12 +18,13 @@
 		<h3> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h3>
 		<br/>
 		
-		<table class="table table w-75 p-3 center-block" style="margin:auto;">
+		<table class="table w-75 p-3 center-block" style="margin:auto;">
 			<thead class="thead-light">
 			   <tr>
 			     <th scope="col">#</th>
 			     <th scope="col">Montant</th>
 			     <th scope="col">Date</th>
+			     <th scope="col">Libelle</th>
 			   </tr>
 			 </thead>
 			 <tbody>
@@ -31,30 +32,47 @@
 				    <tr>
 				      <th scope="row"><c:out value="${ status.count }" /></th>
 				      <td><c:out value="${ transac.getAmount() }" /></td>
-				      <td><c:out value="${ transac.getDate() }" /></td>				  	
+				      <td><c:out value="${ transac.getDate() }" /></td>
+				      <td><c:out value="${ transac.getLabel() }" /></td>				  	
 				    </tr>				
 				</c:forEach> 
 			 </tbody>
     	</table>
-		
-		<!-- Formulaire de création de transaction -->
-		<h2> Nouvelle Transaction </h2>
-			
+    	
+    	<br/>
+    	<!-- Formulaire de création de transaction -->
+    	<h3> Nouvelle Transaction </h3>
+    	
 		<form action="<c:url value="${ Url_path.TRANSACS }"/>" method="post">
-		  Account id:<br>
-		  <input type="number"  name="receiverId" step="1" required><br>
-		  amount:<br>
-		  <input type="number" name="amount" step="0.01" required><br>
-		  label:<br>
-		  <input type="text" name="label" ><br><br>
-		  
-		  <c:set var = "now" value = "<%= new java.util.Date()%>" />
-		  <input type="hidden" name="date" value="<fmt:formatDate pattern = "yyyy-MM-dd" value = "${now}" />">
-          
-          <input type="hidden" name="comptId" value="${ac.getId() }" />
-          
-		  <input type="submit" value="Submit">
+			<div class="w-50 p-3" style="margin:auto;">
+			  <div class="form-group row">
+			    <label for="AccountId" class="col-sm-2 col-form-label">Account id</label>
+			    <div class="col-sm-10">
+					<input type="number" class="form-control" name="receiverId" step="1" required>
+				</div>			  
+			  </div>
+			  
+			  <div class="form-group row">
+			    <label for="Amount" class="col-sm-2 col-form-label">Amount</label>
+			    <div class="col-sm-10">			    
+			    	<input type="number" class="form-control" name="amount" step="0.01" required>
+			    </div>
+			  </div>
+			  
+			  <div class="form-group row">
+			    <label for="exampleInputPassword1" class="col-sm-2 col-form-label">Label</label>
+			    <div class="col-sm-10">
+			    	<input type="text" class="form-control" name="label" >
+			    </div>
+			  </div>
+			  <input type="hidden" name="comptId" value="${ac.getId() }" />
+			  
+			  <button type="submit" class="btn btn-outline-secondary btn-block">Submit</button>
+			</div>
 		</form>
+		
+		
+	
 		
 		<%@ include file="../includes/bootstrap_script.jsp" %>
 	</body>

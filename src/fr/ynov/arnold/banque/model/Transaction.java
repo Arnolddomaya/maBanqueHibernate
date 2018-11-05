@@ -21,6 +21,7 @@ public class Transaction {
 	@ManyToOne
 	private Account transactionAccount;
 	private Date date;
+	private String label;
 	
 	//constructors
 	public Transaction() {
@@ -45,7 +46,7 @@ public class Transaction {
 	public void setTransactionAccount(Account transactionAccount) {
 		this.transactionAccount = transactionAccount;
 	}
-	private String label;
+	
 	public int getId() {
 		return id;
 	}
