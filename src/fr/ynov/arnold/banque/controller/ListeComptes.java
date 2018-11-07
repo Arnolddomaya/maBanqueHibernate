@@ -27,6 +27,9 @@ public class ListeComptes extends HttpServlet {
 	//private static final org.apache.logging.log4j.Logger logger =  LogManager.getLogger(Client.class);
 
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		
+		logger.info("controller ListeComptes, Methode doGet!");
+		
 		Client client = (Client)request.getSession().getAttribute("client");
 		if (client != null) {
 			logger.info("controller ListeComptes, Test client bien récupéré!");
@@ -41,4 +44,10 @@ public class ListeComptes extends HttpServlet {
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Jsp_path.COMPTES);
 		dispatcher.forward(request, response);
 	}
+	
+	public void doDelete( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+		
+		logger.info("controller ListeComptes, method doDelete");
+	}
+	
 }

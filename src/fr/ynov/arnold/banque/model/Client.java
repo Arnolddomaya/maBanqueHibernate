@@ -32,7 +32,9 @@ public class Client
     private List<Account> accounts = new ArrayList<Account>();
     
     
+    //Contructeurs
     public Client() {
+    	
     }
     public Client(String pname, String pForname, String plogin, String ppassword) {	
     	name= pname;
@@ -45,10 +47,7 @@ public class Client
     	address = "rue";
     }
 	
-    @Override
-	public String toString() {
-		return "Client [id=" + id + ", name=" + name + ", forename=" + forename + "]";
-	}
+   //Getteurs et Setteurs 
 
 	public int getId() {
 		return id;
@@ -110,9 +109,15 @@ public class Client
 	public void setAccounts(List<Account> accounts) {
 		this.accounts = accounts;
 	}
+	
+	//Autres méthodes 
 	public void addToAccounts(Account ac) {
 		ac.setAccountClient(this);
 		this.accounts.add(ac);
 	}
 	
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", name=" + name + ", forename=" + forename + "]";
+	}
 }

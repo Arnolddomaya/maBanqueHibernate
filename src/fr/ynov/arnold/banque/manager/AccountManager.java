@@ -22,4 +22,13 @@ public class AccountManager {
 		
 		return acc;
 	}
+	
+	public static void deleteAccount(int id) {
+		
+		EntityManager em = BaseManager.getEntityManager();
+		em.getTransaction().begin();
+		Account acc = em.find(Account.class, id);
+		em.remove(acc);
+		em.getTransaction().commit();
+	}
 }

@@ -18,33 +18,43 @@
 		<h3><fmt:message key="msgTitle"/> <c:out value="${ name }"/></h3>
 		<br/>
 		<div >
-		<table class="table table-sm w-75 p-3 center-block">
-		  <thead class="thead-light">
-		    <tr>
-		      <th scope="col">#</th>
-		      <th scope="col">Libelle</th>
-		      <th scope="col">Balance</th>
-		      <th scope="col"></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <c:forEach items="${ accounts }" var="account" varStatus="status">
+			<table class="table table-sm  center-block">
+			  <thead class="thead-light">
 			    <tr>
-			      <th scope="row"><c:out value="${ status.count }" /></th>
-			      <td><c:out value="${ account.getLibelle()}" /></td>
-			      <td><c:out value="${ account.getBalance()}" /></td>
-			      <td>
-			      
-			      	<form method="get" action="<c:url value="${Url_path.TRANSACS}"/>">
-			    	  <button type= "submit" class="btn btn-outline-secondary btn-block">details</button>
-					  <input type="hidden" name="comptId" value="${ account.getId() }" />
-					</form>
-					
-			      </td>
+			      <th scope="col">#</th>
+			      <th scope="col">Libelle</th>
+			      <th scope="col">Balance</th>
+			      <th scope="col"></th>
+			      <th scope="col"></th>
 			    </tr>
-		    </c:forEach>
-		  </tbody>
-		</table>
+			  </thead>
+			  <tbody>
+			    <c:forEach items="${ accounts }" var="account" varStatus="status">
+				    <tr>
+				      <th scope="row"><c:out value="${ status.count }" /></th>
+				      <td><c:out value="${ account.getLibelle()}" /></td>
+				      <td><c:out value="${ account.getBalance()}" /></td>
+				      <td>
+				      
+				      	<form method="get" action="<c:url value="${Url_path.TRANSACS}"/>">
+				    	  <button type= "submit" class="btn btn-outline-secondary btn-block">Details</button>
+						  <input type="hidden" name="comptId" value="${ account.getId() }" />
+						</form>
+					  </td>
+					  <td>
+						<form method="get" action="<c:url value="${Url_path.DELETE_ACCOUNT}"/>">
+				    	  <button type= "submit" class="btn btn-outline-danger btn-block">Suprimer</button>
+						  <input type="hidden" name="comptId" value="${ account.getId() }" />
+						</form>	
+				      </td>
+				    </tr>
+			    </c:forEach>
+			  </tbody>
+			</table>
+		
+			<form method="get" action="<c:url value="${Url_path.NEW_ACCOUNT}"/>">
+			    <button type= "submit" class="btn btn-outline-secondary btn-lg btn-block">Nouveau compte</button>
+			</form>
 		</div>
 		
 		

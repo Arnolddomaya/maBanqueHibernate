@@ -36,10 +36,12 @@ public class ChangePassword extends HttpServlet{
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		
 		logger.info("Controller ChangePassword, method doPost!");
+		
 		Client cli = (Client) request.getSession().getAttribute("client");
 		String pass = request.getParameter("pass"), confirm = request.getParameter("confirm"), oldPass = request.getParameter("oldPass");
 		
-		logger.info("oldPass: "+ oldPass + ", pass: "+ pass + ", confirm :"+confirm);
+		//logger.info("oldPass: "+ oldPass + ", pass: "+ pass + ", confirm :"+confirm);
+		
 		if (!cli.getPassword().equals(oldPass)) {
 			logger.info("Ancien mot de pass incorrect !!!");
 			return;
@@ -48,7 +50,8 @@ public class ChangePassword extends HttpServlet{
 		if	(PasswordValidations.check(pass, confirm)) {
 			logger.info("Changement de mot de passe en cours!");
 		
-			cli = ClientManager.changePassword(cli, pass);
+			cli.setPassword(pass);
+			cli = ClientManager.updateClient(cli);
 			request.getSession().setAttribute("client", cli);
 			logger.info("Changement de mot de pass reussis!");
 		}

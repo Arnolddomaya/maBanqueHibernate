@@ -1,6 +1,7 @@
 package fr.ynov.arnold.banque.model;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -22,18 +23,32 @@ public class Account {
 	//private TypeCpt type_cpt;
 	private double balance;
 	private Date creation;
+	private String libelle;
 	
 	@OneToMany(mappedBy="transactionAccount", cascade=CascadeType.ALL)
 	private List<Transaction> transactions = new ArrayList<Transaction>();
-	private String libelle;
+	
 	@ManyToOne
 	private Client accountClient;
 	
+	
+	//Constructeurs
 	public Account() {
+		this.creation = new Date();
 	}
 	public Account(String lib) {
 		libelle = lib;
+		this.creation = new Date();
 	}
+	
+	public Account(String lib, double balance) {
+		libelle = lib;
+		this.creation = new Date();
+		this.balance = balance;
+	}
+	
+	
+	//getteurs et setteurs 
 	public String getLibelle() {
 		return libelle;
 	}
@@ -76,6 +91,8 @@ public class Account {
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
 	}
+	
+	//Autres méthodes 
 	public void addToTransactions(Transaction tran) {
 		tran.setTransactionAccount(this);
 		this.transactions.add(tran);

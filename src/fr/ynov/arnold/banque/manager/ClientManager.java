@@ -27,6 +27,7 @@ public class ClientManager  {
 	public static Client loadClientById(Integer clientId) {
 		EntityManager em = BaseManager.getEntityManager();
 		Client user = em.find(Client.class, clientId);
+		
 		return user;
 	}
 	
@@ -48,11 +49,10 @@ public class ClientManager  {
 		
 	}
 	
-	public static Client changePassword(Client cli,  String pass) {
+	public static Client updateClient(Client cli) {
 		
 		EntityManager em = BaseManager.getEntityManager();
-		em.getTransaction().begin();
-		cli.setPassword(pass);
+		em.getTransaction().begin();		
 		cli = em.merge(cli);
 		em.getTransaction().commit();
 		
