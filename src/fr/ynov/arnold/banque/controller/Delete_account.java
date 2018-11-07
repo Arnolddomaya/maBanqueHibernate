@@ -13,7 +13,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.manager.AccountManager;
+import fr.ynov.arnold.banque.manager.ClientManager;
 import fr.ynov.arnold.banque.model.Account;
+import fr.ynov.arnold.banque.model.Client;
 import fr.ynov.arnold.banque.others.Url_path;
 
 @WebServlet(Url_path.DELETE_ACCOUNT)
@@ -29,9 +31,16 @@ public class Delete_account extends HttpServlet{
 		
 		logger.info("Controller DeleteAccount, method doGet!");
 		int  id = Integer.parseInt(request.getParameter("comptId"));
+		Client cli;
 		
 		logger.info("compte Id :" + request.getParameter("comptId"));
 		AccountManager.deleteAccount(id);
+		
+		cli = ClientManager.loadClientById(
+				((Client)request.getSession().getAttribute("client")).getId()
+				);
+		request.getSession().setAttribute("client", cli);
 		response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
+		
 	}
 }
