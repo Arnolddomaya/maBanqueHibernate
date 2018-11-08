@@ -37,7 +37,7 @@ public class TransacCreation extends HttpServlet{
 			double amount = Double.parseDouble(request.getParameter("amount"));
 			
 			Account receiver = AccountManager.loadAccountById(receiverId);
-			Account sender = AccountManager.loadAccountById(receiverId);
+			Account sender = AccountManager.loadAccountById(senderId);
 			
 			sender.addToTransactions(new Transaction(-amount, label));
 			receiver.addToTransactions(new Transaction(amount, label));
