@@ -86,4 +86,6 @@ public class TransactionsList extends HttpServlet{
 		
 		response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 	}
+	
+
 }

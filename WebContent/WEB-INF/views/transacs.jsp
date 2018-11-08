@@ -15,7 +15,7 @@
 		<%@ include file="../includes/navbar.jsp" %>
 		<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgTransacs" />
 		<br/>
-		<h3> Liste des transactions :  <c:out value="${ ac.getLibelle() }"/></h3>
+		<h3><c:out value="${ ac.getLibelle() }, sode : ${ ac.getBalance() }"/></h3>
 		<br/>
 		
 		<table class="table w-75 p-3 center-block" style="margin:auto;">

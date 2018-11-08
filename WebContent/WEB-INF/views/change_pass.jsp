@@ -11,6 +11,9 @@
 	<body>
 		<%@ include file="../includes/navbar.jsp"%>
 		<fmt:setBundle basename="fr.ynov.arnold.banque.textes.msgChgPass" />
+		
+		<br/>
+		<h3>Changement de mot de passe</h3>
 	
 		<form method="post" action="<%=request.getContextPath() + Url_path.CHANGE_PASS%>">
 			<fieldset>
