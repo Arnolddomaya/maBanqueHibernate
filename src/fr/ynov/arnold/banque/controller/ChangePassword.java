@@ -31,6 +31,8 @@ public class ChangePassword extends HttpServlet{
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Jsp_path.CHANGE_PASS);
 		logger.info("Controller ChangePassword, method doGet!");
+		
+		request = AlertControl.sendAlert(request);
 		dispatcher.forward(request, response);	
 	}
 	
@@ -77,19 +79,14 @@ public class ChangePassword extends HttpServlet{
 		}
 		
 		logger.info("Checkings ok");	
-		if	(PasswordValidations.check(pass, confirm)) {
-			logger.info("Changement de mot de passe en cours!");
+		logger.info("Changement de mot de passe en cours!");
 		
-			cli.setPassword(pass);
-			cli = ClientManager.updateClient(cli);
-			request.getSession().setAttribute("client", cli);
-			logger.info("Changement de mot de pass reussis!");
-			response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
-		}
-		else {
-			logger.error("Impossible de changer le mot de passe!");
-			response.sendRedirect(request.getContextPath()+Url_path.CHANGE_PASS);
-		}
+		cli.setPassword(pass);
+		cli = ClientManager.updateClient(cli);
+		request.getSession().setAttribute("client", cli);
+		logger.info("Changement de mot de pass reussis!");
+		
+		AlertControl.setSuccessAlertAndRedirect(request, response, "Changement de mot de passe bien éffectué !", Url_path.ACCOUNT);	
 	}
 }
 

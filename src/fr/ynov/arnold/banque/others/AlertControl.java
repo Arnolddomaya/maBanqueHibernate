@@ -41,4 +41,10 @@ public class AlertControl {
 		request.getSession().setAttribute("error", msg);
 		response.sendRedirect(request.getContextPath()+path);
 	}
+	
+	public static void setSuccessAlertAndRedirect( HttpServletRequest request, HttpServletResponse response, String msg, String path ) throws IOException {
+		
+		request.getSession().setAttribute("success", msg);
+		response.sendRedirect(request.getContextPath()+path);
+	}
 }

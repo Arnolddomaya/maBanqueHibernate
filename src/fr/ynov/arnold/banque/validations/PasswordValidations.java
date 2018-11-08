@@ -34,6 +34,6 @@ public class PasswordValidations {
 		return Pattern.matches(".*[йизащофкв].*", ppass);
 	}
 	public static boolean passMatchConfirm(String ppass, String pconfirm) {
-		return false;
+		return ppass.equals(pconfirm);
 	}
 }

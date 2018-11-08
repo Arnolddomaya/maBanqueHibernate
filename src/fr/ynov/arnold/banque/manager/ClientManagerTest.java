@@ -12,7 +12,10 @@ public class ClientManagerTest {
 	//private Logger logger = LogerManager.getLogger();
 	public static void main(String[] args) {
 		//loadByLoginPassword("monLogin", "monPassword");
-		saveClient("jack", "Baueur", "jbaueur", "passpass");
+		
+		//saveClient("jack", "Baueur", "jbaueur", "passpass");
+		
+		
 		//ClientManager.purgeTable();
 		//saveClientWithAccountsWithTransac("prenom", "nom", "monLogin", "monPassword");
 		return;
