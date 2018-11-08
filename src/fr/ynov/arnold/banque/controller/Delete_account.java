@@ -40,6 +40,7 @@ public class Delete_account extends HttpServlet{
 				((Client)request.getSession().getAttribute("client")).getId()
 				);
 		request.getSession().setAttribute("client", cli);
+		request.getSession().setAttribute("success", "Compte n°" + id +" bien rétirer de la liste!");
 		response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 		
 	}

@@ -54,9 +54,21 @@ public class TransactionsList extends HttpServlet{
 		Account receiver = AccountManager.loadAccountById(receiverId);
 		if ( receiver == null || comptId == receiverId) {
 			logger.error("Receiver account id not valid !");
+			request.getSession().setAttribute("error", "Transaction impossible du compte "+ comptId+ " vers le compte "+ receiverId);
 			response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 			return;
 		}
+		
+		if (amount <= 0) {
+			
+			logger.error("transaction amount not valid !");
+			request.getSession().setAttribute("error", "Transaction impossible, le montant doit être supérieur à 0! ");
+			response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
+			return;
+		}
+		//Mettre condition somme négative ou égale à zero
+		
+		
 		Account sender = AccountManager.loadAccountById(comptId);
 		
 		sender.addToTransactions(new Transaction(-amount, label));
@@ -66,7 +78,9 @@ public class TransactionsList extends HttpServlet{
 		AccountManager.updateAccount(receiver);
 		
 		Client cli = ClientManager.loadClientById(sender.getAccountClient().getId());
+		
 		request.getSession().setAttribute("client", cli);
+		request.getSession().setAttribute("success", "Transaction vers compte n°"+ receiverId + " bien effectué!");
 		
 		logger.info("Transaction creation : Success !");
 		

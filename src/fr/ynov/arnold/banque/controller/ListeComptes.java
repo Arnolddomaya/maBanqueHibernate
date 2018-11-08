@@ -13,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.others.AlertControl;
 import fr.ynov.arnold.banque.others.Jsp_path;
 import fr.ynov.arnold.banque.others.Url_path;
 
@@ -30,11 +31,14 @@ public class ListeComptes extends HttpServlet {
 		
 		logger.info("controller ListeComptes, Methode doGet!");
 		
+		request = AlertControl.sendAlert(request);
+		
 		Client client = (Client)request.getSession().getAttribute("client");
 		if (client != null) {
 			logger.info("controller ListeComptes, Test client bien récupéré!");
 			request.setAttribute("name", client.getName());
 			request.setAttribute("accounts", client.getAccounts());
+			
 		}
 		else { 
 			logger.info("controller ListeComptes, Client loading fails!");
@@ -45,6 +49,7 @@ public class ListeComptes extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 	
+	@Override
 	public void doDelete( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		
 		logger.info("controller ListeComptes, method doDelete");

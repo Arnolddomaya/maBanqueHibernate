@@ -46,6 +46,7 @@ public class NewAccount extends HttpServlet{
 		cli = ClientManager.updateClient(cli);
 		
 		request.getSession().setAttribute("client", cli);
+		request.getSession().setAttribute("success", "Nouveau compte bien ajouté!");
 		response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
 	}
 

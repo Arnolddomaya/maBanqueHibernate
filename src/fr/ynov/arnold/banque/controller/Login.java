@@ -14,6 +14,7 @@ import org.apache.logging.log4j.core.Logger;
 
 import fr.ynov.arnold.banque.manager.ClientManager;
 import fr.ynov.arnold.banque.model.Client;
+import fr.ynov.arnold.banque.others.AlertControl;
 import fr.ynov.arnold.banque.others.Jsp_path;
 import fr.ynov.arnold.banque.others.Url_path;
 
@@ -27,6 +28,8 @@ public class Login extends HttpServlet{
 	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(Jsp_path.LOGIN);
 		logger.info("controller Login, method doGet!");
+		
+		request = AlertControl.sendAlert(request);
 		dispatcher.forward(request, response);	
 	}
 
@@ -38,16 +41,23 @@ public class Login extends HttpServlet{
 		String login = request.getParameter("login");
 		String password = request.getParameter("password");
 		
+		
 		logger.info("controller Login, method doPost!");
 		Client client = ClientManager.loadClientByLoginAndPassword(login, password);
 		if (client == null) {
 			request.setAttribute("errorMsg", "login inexistant ou mdp invalid !!");
 			logger.info("controller Login, method doPost   Client not found");
+			
+			request.getSession().setAttribute("error", "Identifiant ou mot de passe inconrect ! ");
 			response.sendRedirect(request.getContextPath()+Url_path.LOGIN);
 		}
 		else {
 			logger.error("Client found, client found, redirection to comptes path");
-			request.getSession().setAttribute("client", client);
+			
+			request.getSession().setAttribute("client", client);			
+			request.getSession().setAttribute("success", "Indentification reussis!");
+			
+			
 			//Attribuer une durée de la connexion ici fixé à 2 min
 			request.getSession().setMaxInactiveInterval(2*60);
 			response.sendRedirect(request.getContextPath()+Url_path.ACCOUNT);
