@@ -21,7 +21,7 @@
 	    
 	    <c:if test="${ not empty error }">
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
-				Success info: <strong>${ error }</strong>
+				Error info: <strong>${ error }</strong>
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
