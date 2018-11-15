@@ -28,7 +28,7 @@ public class LogOut extends HttpServlet {
 		logger.info("controller LogOut, method doGet!");
 		HttpSession session = request.getSession(false);
 		if(session != null)
-		    //ecrase carrement le client
+		    //écrase la session et toutes les données qu'elle contient
 			//session.invalidate();
 			session.setAttribute("client", null);
 		response.sendRedirect(request.getContextPath()+Url_path.LOGIN);
